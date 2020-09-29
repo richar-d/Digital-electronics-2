@@ -6,5 +6,4 @@
 H1
 ======
 
-H1
-==
+** *emphasis* **emphasis** **emphasis __emphasis__** ~~emphasis~~
