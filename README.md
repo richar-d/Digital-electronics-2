@@ -9,6 +9,6 @@ H1
 ** *emphasis* **emphasis**  ~~emphasis~~
 
 1. test
-2.test
+2. test
 ..1. test
 ..2. test
