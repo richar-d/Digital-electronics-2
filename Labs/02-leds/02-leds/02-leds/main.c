@@ -48,9 +48,12 @@ int main(void)
     {
         // Pause several milliseconds
         _delay_ms(BLINK_DELAY);
-
+		
+		if(bit_is_clear(PIND, BTN))
+		{
           PORTB = PORTB ^ (1<<LED_GREEN);
 		  PORTC = PORTC ^ (1<<LED_RED);
+		}
     }
 
     // Will never reach this
