@@ -10,11 +10,11 @@ Draw two basic ways to connect a LED to the output pin of the microcontroller: L
 
 Diode active high:
 
-![logic](../../Images/ledhigh.PNG)
+![logic](../../Images/ledhigh.png)
 
 Diode active low:
 
-![logic](../../Images/ledlow.PNG)
+![logic](../../Images/ledlow.png)
 
 
 
@@ -33,11 +33,11 @@ Draw the basic ways to connect a push button to the microcontroller input pin: b
 
 Button active high:
 
-![logic](../../Images/buttonhigh.PNG)
+![logic](../../Images/buttonhigh.png)
 
 Button active low:
 
-![logic](../../Images/buttonlow.PNG)
+![logic](../../Images/buttonlow.png)
 
 
 
@@ -95,4 +95,4 @@ See [schematic of Arduino Uno board](../../Docs/arduino_shield.pdf) in docs fold
 
 02-leds simulation:
 
-![logic](../../Images/02leds.PNG)
+![logic](../../Images/02leds.png)
