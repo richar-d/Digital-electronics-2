@@ -30,3 +30,12 @@
 | 0x0028 | USART_RX | USART_RX_vect | USART, Tx Complete |
 | 0x002A | ADC | ADC_vect | ADC Conversion Complete |
 | 0x0030 | TWI | TWI_vect | 2-wire Serial Interface |
+
+| **Module** | **Description** | **MCU pin** | **Arduino pin** |
+| :-: | :-: | :-: | :-: |
+| Timer/Counter0 | OC0A |  PD6  |  6  |
+|                | OC0B |  PD5  |  5  |
+| Timer/Counter1 | OC1A | PB1 |  9 |
+|                | OC1B | PB2 | 10 |
+| Timer/Counter2 | OC2A |  NA  |  NA  |
+|                | OC2B |  PD3 |  3  |

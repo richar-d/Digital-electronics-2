@@ -38,7 +38,7 @@
  */
 								//Set zeros column								 //Set ones column
 #define TIM0_stop()				TCCR0B &= ~((1<<CS00) | (1<<CS01) | (1<<CS00));
-#define TIM0_overflow_16us()    TCCR0B &= ~((1<<CS01) | (1<<CS01));				 TCCR0B |= (1<<CS00);
+#define TIM0_overflow_16us()    TCCR0B &= ~((1<<CS02) | (1<<CS01));				 TCCR0B |= (1<<CS00);
 #define TIM0_overflow_128us()   TCCR0B &= ~((1<<CS02) | (1<<CS00));				 TCCR0B |= (1<<CS01);
 #define TIM0_overflow_1ms()		TCCR0B &= ~(1<<CS02);							 TCCR0B |= (1<<CS01) | (1<<CS00);
 #define TIM0_overflow_4ms()     TCCR0B &= ~((1<<CS01) | (1<<CS00));				 TCCR0B |= (1<<CS02);
