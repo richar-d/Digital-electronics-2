@@ -175,7 +175,10 @@ ISR(TIMER2_OVF_vect)
 		itoa(secs, lcd_string, 10); //1 digit or 2 digits
 		if(secs < 10)					
 		{
-			lcd_gotoxy(5,0); //if 1 digit
+			lcd_gotoxy(4,0); //if 1 digit
+			lcd_puts("0");   //reset 1st digit of seconds
+			lcd_gotoxy(5,0);  //go to 2nd  digit of seconds
+	
 		}
 		else
 		{
@@ -187,7 +190,9 @@ ISR(TIMER2_OVF_vect)
 		itoa(minutes, lcd_string, 10); //1 digit or 2 digits
 		if(minutes < 10)
 		{
-			lcd_gotoxy(2,0); //if 1 digit
+			lcd_gotoxy(1,0); //if 1 digit
+			lcd_puts("0");	 //reset 1st digit of mins
+			lcd_gotoxy(2,0); // go to 2nd digit of mins
 		}
 		else
 		{
