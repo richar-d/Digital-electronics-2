@@ -130,39 +130,26 @@ ISR(ADC_vect)
 	//print pressed key
 	if (value > 1016)
 	{
-		 lcd_puts("None");
+		lcd_puts("None");
 	}
-	 else
-	 {
-		 if (value == 650)
-		 {
-			 lcd_puts("Select");
-		 }
-		 else
-		 {
-			 if (value == 402)
-			 {
-				 lcd_puts("Left");
-			 }
-			 else
-			 {
-				 if (value == 245)
-				 {
-					 lcd_puts("Down");
-				 }
-				 else
-				 {
-					 if (value == 101)
-					 {
-						 lcd_puts("Up");
-					 }
-					 else
-					 {
-					 lcd_puts("Right");
-					 }
-				 }
-			 }
-		 }
+	else if (value == 650)
+	{
+		lcd_puts("Select");
 	}
- 
+	else if (value == 402)
+	{
+		lcd_puts("Left");
+	}
+	else if (value == 245)
+	{
+		lcd_puts("Down");
+	}
+	else if (value == 101)
+	{
+		lcd_puts("Up");
+	}
+	else
+	{
+		lcd_puts("Right");
+	}
 }
