@@ -152,4 +152,38 @@ ISR(ADC_vect)
 	{
 		lcd_puts("Right");
 	}
+	
+	//odd parity
+	int storage[32];
+	int m = 0;
+	int n, par;
+
+	if(value > 1000)
+	{
+		par = 0;
+		itoa(par, lcd_string, 10);
+		lcd_gotoxy(15,1);
+		lcd_puts(lcd_string);
+	}
+	else
+	{
+		while (value > 0)					
+		{
+			storage[m] = value % 2;
+			value = value / 2;
+			m++;
+		}
+		for (n = m-1; n > 0; n--)
+			if(storage[n] == 1)
+			{
+				par = 1;
+			}
+			else
+			{
+				par = 0;
+			}	
+		itoa(par, lcd_string, 10);
+		lcd_gotoxy(15,1);
+		lcd_puts(lcd_string);
+	}
 }
