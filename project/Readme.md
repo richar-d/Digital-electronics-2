@@ -3,7 +3,7 @@ Authors:
 
 Alexandr Voronin, link to github repository: https://github.com/AlexandrVoronin/Digital-electronics-2/tree/master/project
 
-Richard Šebo, link to github repository: https://github.com/richar-d/Digital-electronics-2/tree/master/Labs
+Richard Šebo, link to github repository: https://github.com/richar-d/Digital-electronics-2/tree/master/project
 
 
 
