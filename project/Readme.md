@@ -65,7 +65,7 @@ Electronic device used for displaying ASCII text. It offers various display size
    
    
 	b) Infinite loop while(1):
-	  - Ultrasonic wave is sent by one of the sensors
+	  - 10us pulse is sent to one of the sensors trigger pin, the sensor then sends ultrasonic wave
 	  - Save the closer of the 2 distances to a local variable
 	  - Update loading bar, LCD warning and UART information - loading bar and warning always represent the sensor which is closer to an obstacle
 	  - Change sensor for the next loop
