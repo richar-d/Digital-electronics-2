@@ -14,7 +14,7 @@
 #include <avr/interrupt.h>		// Interrupts standard C library for AVR-GCC
 #include <stdlib.h>			// C library. Needed for conversion function
 #include <stdio.h>
-#include <util/delay.h>			//delays library
+#include <util/delay.h>
 #include "uart.h"			//Peter Fleury's UART library
 #include "gpio.h"			//gpio library for AVR_GCC
 #include "lcd.h"			//library for functions for lcd operations
@@ -23,19 +23,19 @@
 #include "project_functions.h"		//library for functions for displaying outputs
 #include "timer.h"			//library for timer
 
-volatile uint8_t sensor_id = 0;			//selects sensor for which the main loop executes
-volatile float distances[] = {0,0};		//distance[0]=distance to front sensor distance[1]=distance to back sensor
-char lcd_string[50];				//for displaying data on lcd
+volatile uint8_t sensor_id = 0;		//selects sensor for which the main loop executes
+volatile float distances[] = {0,0};	//distance[0]=distance to front sensor distance[1]=distance to back sensor
+char lcd_string[50];			//for displaying data on lcd
 
 int main(void)
 {
-	lcd_config();			//initial configuration of LCD display
+	lcd_config();	//initial configuration of LCD display
 	
 	uart_init(UART_BAUD_SELECT(9600,F_CPU));	//initialize UART		
 	
-	pins_config();			//initial configuration of pins
+	pins_config();		//initial configuration of pins
 						
-	LEDs_off();			//turn LEDs off				
+	LEDs_off();		//turn LEDs off				
 	
 	//enable overflow interrupt and set default value
 	TIM2_overflow_16ms();
@@ -51,24 +51,24 @@ int main(void)
 	
 	sei(); //enable interrupts
 	
-    while (1) 
-    {	
+    	while (1) 
+    	{	
 		if (sensor_id == 1)
 		{
-			_delay_ms(60);				//ensure one cycle lasts minimum 60ms
+			_delay_ms(60);				//ensure one cycle lasts at least 60 ms
 			GPIO_write_high(&PORTB,Back_trigger);	//
 			_delay_us(10);				//send start pulse (10us) to back sensor
 			GPIO_write_low(&PORTB,Back_trigger);	//		   
 		}
 		else
 		{
-			_delay_ms(60);				//ensure one cycle lasts minimum 60ms			
+			_delay_ms(60);				//ensure one cycle lasts at least 60 ms			
 			GPIO_write_high(&PORTB,Front_trigger);	//
 			_delay_us(10);				//send start pulse (10us) to front sensor
 			GPIO_write_low(&PORTB,Front_trigger);	//
 		}
 
-		int smaller_distance = 1;	//for saving the smaller distance of the 2 sensors
+		int smaller_distance = 1;			//for saving the smaller distance of the 2 sensors
 		
 		//choose smaller distance
 		if(distances[0] > distances[1])
@@ -117,6 +117,14 @@ ISR(INT1_vect)
 }
 
 //interrupt iterates as long as echo signal from back sensor is 1
+ISR(INT0_vect)
+{
+	do
+	{
+		distances[1]++;			//keep counting
+	} while (GPIO_read(&PIND,Back_Echo));	//until echo is 0
+}
+
 ISR(TIMER2_OVF_vect)
 {
 	int freq = 50;  //for saving closer distance
@@ -158,4 +166,5 @@ ISR(TIMER2_OVF_vect)
 	{
 		TIM2_overflow_512us();		//f = 1 kHz
 	}
+
 }
