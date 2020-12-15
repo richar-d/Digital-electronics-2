@@ -117,23 +117,9 @@ ISR(INT1_vect)
 }
 
 //interrupt iterates as long as echo signal from back sensor is 1
-ISR(INT0_vect)
-{
-	do
-	{
-		distances[1]++;			//keep counting
-	} while (GPIO_read(&PIND,Back_Echo));	//until echo is 0
-}
-
 ISR(TIMER2_OVF_vect)
 {
 	int freq = 50;  //for saving closer distance
-	
-	//flick the led if in range for flicking
-	if (freq<=100)
-	{
-		GPIO_toggle(&PORTB, alarm);
-	}	
 	
 	//choose smaller distance
 	if(distances[0] >= distances[1])
@@ -145,26 +131,31 @@ ISR(TIMER2_OVF_vect)
 		freq = distances[0];
 	}
 	
+	//flick the led if in range for flicking
+	if (freq<=100)
+	{
+		GPIO_toggle(&PORTB, alarm);
+	}	
+	
 	//select frequency of signal led based on smaller distance
 	if (freq <= 100 && freq > 75)
 	{
-		TIM2_overflow_16ms();	//f = 30.5 Hz	
+		TIM2_overflow_16ms();		//f = 30.5 Hz	
 	}
 	else if (freq <= 75 && freq > 50)
 	{
-		TIM2_overflow_4ms();	//f = 125 Hz
+		TIM2_overflow_4ms();		//f = 125 Hz
 	}
 	else if (freq <= 50 && freq > 25)
 	{
-		TIM2_overflow_2ms();	//f = 250 Hz
+		TIM2_overflow_2ms();		//f = 250 Hz
 	}
 	else if (freq <= 25 && freq > 10)
 	{
-		TIM2_overflow_1ms();	//f = 500 Hz
+		TIM2_overflow_1ms();		//f = 500 Hz
 	}
 	else if (freq <= 10)
 	{
-		TIM2_overflow_512us();	//f = 1 kHz
+		TIM2_overflow_512us();		//f = 1 kHz
 	}
-
 }
