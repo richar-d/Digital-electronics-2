@@ -2,7 +2,7 @@
  * main.c
  *
  * Created: 03.12.2020 13:33:19
- * Author : Alexandr Voronin, Richard Šebo
+ * Author : Alexandr Voronin, Richard Å ebo
  */ 
 
 /* Includes ----------------------------------------------------------*/
@@ -55,14 +55,14 @@ int main(void)
     {	
 		if (sensor_id == 1)
 		{
-			_delay_ms(60);							//ensure one cycle lasts minimum 50us
+			_delay_ms(60);							//ensure one cycle lasts minimum 60ms
 			GPIO_write_high(&PORTB,Back_trigger);	//
 			_delay_us(10);							//send start pulse (10us) to back sensor
 			GPIO_write_low(&PORTB,Back_trigger);	//		   
 		}
 		else
 		{
-			_delay_ms(60);							//ensure one cycle lasts minimum 50us			
+			_delay_ms(60);							//ensure one cycle lasts minimum 60ms			
 			GPIO_write_high(&PORTB,Front_trigger);	//
 			_delay_us(10);							//send start pulse (10us) to front sensor
 			GPIO_write_low(&PORTB,Front_trigger);	//
