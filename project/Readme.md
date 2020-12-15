@@ -58,7 +58,7 @@ Electronic device used for displaying ASCII text. It offers various display size
    
    
 	b) Infinite loop while(1):
-	  - If trigger_enable equals 1 (set to 1 as initial value or by ISR), ultrasonic wave is sent by one of the sensors and trigger_enable is set to 0
+	  - An ultrasonic wave is sent by one of the sensors
 	  - Save the closer of the 2 distances to a local variable
 	  - Update loading bar, LCD warning and UART information - loading bar and warning always represent the sensor which is closer to an obstacle
 	  - Change sensor for the next loop
@@ -66,7 +66,6 @@ Electronic device used for displaying ASCII text. It offers various display size
 4. ISR(INT1_vect) and ISR(INT0_vect)
 - These ISRs are used for getting the distance to an obstacle, each sensor uses its own ISR
 - As long as echo signal from either sensor is 1, iterate the distance
-- Set trigger_enable to 1, this allows sending another pulse in main body infinite loop
 
 5. ISR(TIMER2_OVF_vect)
 - This ISR is used for sound alarm when an obstacle is close
