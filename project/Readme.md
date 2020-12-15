@@ -9,7 +9,7 @@ Richard Šebo, link to github repository: https://github.com/richar-d/Digital-el
 
 <h3>Project objectives</h3>
 	
-<p>Application of parking assistant using two HC-SR04 sensors. Output interface:LCD, frequency "audio", led stripe</p>
+<p>Application of parking assistant using two HC-SR04 sensors. Output interface: LCD, frequency "audio", led stripe</p>
 
 <h2> Hardware description </h3>
 
