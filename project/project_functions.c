@@ -2,14 +2,14 @@
  * project_functions.c
  *
  * Created: 14.12.2020 9:59:42
- *  Author: Alexandr Voronin, Richard Šebo
+ *  Author: Alexandr Voronin, Richard Å ebo
  */ 
 
-#include "gpio.h"				//gpio library for AVR_GCC
+#include "gpio.h"			//gpio library for AVR_GCC
 #include "project_setup.h"		//pins definition and library for led functions
-#include "lcd.h"				//library of functions for lcd operations
-#include "project_functions.h"	//library of functions for displaying outputs
-#include "uart.h"				//Peter Fleury's UART library
+#include "lcd.h"			//library of functions for lcd operations
+#include "project_functions.h"		//library of functions for displaying outputs
+#include "uart.h"			//Peter Fleury's UART library
 
 //display distances to sensor[id]
 void Display_dist(uint8_t id,volatile float dist[], char string[])
@@ -17,13 +17,13 @@ void Display_dist(uint8_t id,volatile float dist[], char string[])
 	if (dist[id]<10)
 	{
 		lcd_gotoxy(14,id);		//set position to hundrets
-		lcd_puts("  ");			//clear hundrets and tenths
+		lcd_puts("  ");			//clear hundreths and tenths
 		lcd_gotoxy(16, id);		//go to ones
 	}
 	
 	else if (dist[id]>=10 && dist[id]<100)
 	{
-		lcd_gotoxy(14,id);		//set position to hundrets
+		lcd_gotoxy(14,id);		//set position to hundreths
 		lcd_puts(" ");			//clear hundrets
 		lcd_gotoxy(15, id);		//set position to tenths
 	}
