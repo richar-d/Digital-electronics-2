@@ -9,7 +9,7 @@ Richard Šebo, link to github repository: https://github.com/richar-d/Digital-el
 
 <h3>Project objectives</h3>
 	
-<p>Application of parking assistant using two HC-SR04 sensors. Output interface:LCD, frequency "audio", led stripe</p>
+<p>Application of parking assistant using two HC-SR04 sensors. Output interface: LCD, frequency "audio", led stripe</p>
 
 <h2> Hardware description </h3>
 
@@ -21,7 +21,7 @@ Richard Šebo, link to github repository: https://github.com/richar-d/Digital-el
 <h3> Atmega328p </h3>
 <p>Application was brought to life using Atmega328p, 8-bit microchip controller. It has 21 GPIO pins accessed through registers PORTB,PORTC,PORTD. We are using external interrupt pins (PD3,PD2) for echo signals and I/O pins (PB3,PB2) for sending trigger signal to the sensor. I/0 pins PC1-5 are used for the led stripe output. I/0 pin PB4 is used for output to led replacing audio signaling by blinking in different frequencies based on smaller distance. Freqeuncies are generated based on different overflow times for internal timer overflow. For LCD pins PD4-7 are used for data ports, pin PB0 asi RS pin and port PB1 as E pin. </p>
 <h3> LCD </h3>
-Electronic device used for displaying ASCII text. It offers various display sizes. We are using 20x4. It is capable of operating i 8-bit mode, however 4-bit mode is more appropriate for mcu since only 6-7 pins are neede compared to 11pins with 8-bit. The 6 pin interface we are using consists of:
+Electronic device used for displaying ASCII text. It offers various display sizes. We are using 20x4. It is capable of operating i 8-bit mode, however 4-bit mode is more appropriate for mcu since only 6-7 pins are needed compared to 11 pins with 8-bit. The 6 pin interface we are using consists of:
 
 ![logic](../Images/lcd.PNG)
 
@@ -30,9 +30,9 @@ Electronic device used for displaying ASCII text. It offers various display size
 	- RS=0, when a command is given
 	- RS=1, when data is sent
 	
--E  enable. Loads data into lcd on falling edge
+-En  enable. Loads data into lcd on falling edge
 
--D7:4 Upper 4its used in 4-bit mode.
+-D7:4 Upper 4 bits used in 4-bit mode.
 
 <h3>Circuit diagram</h3>
 
@@ -58,7 +58,7 @@ Electronic device used for displaying ASCII text. It offers various display size
    
    
 	b) Infinite loop while(1):
-	  - If trigger_enable equals 1 (set to 1 as initial value or by ISR), ultrasonic wave is sent by one of the sensors and trigger_enable is set to 0
+	  - An ultrasonic wave is sent by one of the sensors
 	  - Save the closer of the 2 distances to a local variable
 	  - Update loading bar, LCD warning and UART information - loading bar and warning always represent the sensor which is closer to an obstacle
 	  - Change sensor for the next loop
@@ -66,7 +66,6 @@ Electronic device used for displaying ASCII text. It offers various display size
 4. ISR(INT1_vect) and ISR(INT0_vect)
 - These ISRs are used for getting the distance to an obstacle, each sensor uses its own ISR
 - As long as echo signal from either sensor is 1, iterate the distance
-- Set trigger_enable to 1, this allows sending another pulse in main body infinite loop
 
 5. ISR(TIMER2_OVF_vect)
 - This ISR is used for sound alarm when an obstacle is close
