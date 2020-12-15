@@ -19,8 +19,8 @@
 
 #define Front_trigger PB3
 #define Back_trigger  PB2
-#define Front_Echo	  PD3
-#define Back_Echo	    PD2
+#define Front_Echo    PD3
+#define Back_Echo     PD2
 
 //function declarations
 void LEDs_off(void);                 //Turn off all LEDs
